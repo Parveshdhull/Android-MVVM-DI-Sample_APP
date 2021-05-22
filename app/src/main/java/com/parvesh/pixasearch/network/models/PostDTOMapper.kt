@@ -2,8 +2,9 @@ package com.parvesh.pixasearch.network.models
 
 import com.parvesh.pixasearch.domain.models.Post
 import com.parvesh.pixasearch.domain.util.DomainMapper
+import javax.inject.Inject
 
-class PostDTOMapper : DomainMapper<PostDTO, Post>{
+class PostDTOMapper @Inject constructor(): DomainMapper<PostDTO, Post>{
     override fun mapToDomainModel(model: PostDTO): Post {
         return Post(
             model.thumbnail,

@@ -3,8 +3,9 @@ package com.parvesh.pixasearch.repository
 import com.parvesh.pixasearch.domain.models.Post
 import com.parvesh.pixasearch.network.RetrofitSearchService
 import com.parvesh.pixasearch.network.models.PostDTOMapper
+import javax.inject.Inject
 
-class PostsRepository (
+class PostsRepository @Inject constructor(
         private val searchService: RetrofitSearchService,
         private val mapper: PostDTOMapper,
 ): PostsRepositoryInterface {
