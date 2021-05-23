@@ -1,27 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"/>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.parvesh.pixasearch.ui.MainActivityViewModel" />
+    </data>
 
-    <SearchView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="-20dp"
-        android:paddingRight="15dp"
-        app:theme="@style/AppTheme.SearchBar"
-        android:id="@+id/main_activity_search_view"/>
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
+        <SearchView
+            android:id="@+id/main_activity_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="-20dp"
+            android:iconifiedByDefault="false"
+            android:paddingRight="15dp"
+            android:queryHint="Search"
+            app:theme="@style/AppTheme.SearchBar" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.hideProgressBar ? View.GONE : View.VISIBLE}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.hideRecyclerView ? View.GONE : View.VISIBLE}"
+            android:layout_marginTop="50dp"
+            android:id="@+id/main_activity_recyler_view"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/no_data_found"
+            android:visibility="@{viewModel.hidePlaceholder ? View.GONE : View.VISIBLE}"
+            android:textSize="20sp"/>
+
+    </RelativeLayout>
+</layout>

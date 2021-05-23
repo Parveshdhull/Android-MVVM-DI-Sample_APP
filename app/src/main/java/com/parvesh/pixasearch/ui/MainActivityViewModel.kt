@@ -3,6 +3,7 @@ package com.parvesh.pixasearch.ui
 import androidx.lifecycle.ViewModel
 import com.parvesh.pixasearch.repository.PostsRepository
 import com.parvesh.pixasearch.utils.Utils
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.functions.Consumer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,9 +12,16 @@ import javax.inject.Inject
 
 class MainActivityViewModel @Inject constructor(
     private val postsRepository: PostsRepository
+
 ): ViewModel() {
 
+    private val disposables: CompositeDisposable = CompositeDisposable()
+    var hideProgressBar = false
+    var hideRecyclerView = true
+    var hidePlaceholder = true
+
     init {
+        hideProgressBar = true
         CoroutineScope(Dispatchers.IO).launch {
 
             postsRepository.getPosts(
@@ -30,5 +38,10 @@ class MainActivityViewModel @Inject constructor(
 
     fun test(){
         Utils.log("View Model Log", "Working")
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposables.clear()
     }
 }

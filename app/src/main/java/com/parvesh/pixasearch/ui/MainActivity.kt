@@ -1,22 +1,26 @@
 package com.parvesh.pixasearch.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.parvesh.pixasearch.PixaApplication
 import com.parvesh.pixasearch.R
+import com.parvesh.pixasearch.databinding.ActivityMainBinding
 import com.parvesh.pixasearch.repository.PostsRepository
 import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
-    val viewModel: MainActivityViewModel by viewModels { factory }
 
-    lateinit var searchView: SearchView
+    private val viewModel: MainActivityViewModel by viewModels { factory }
+
+    private lateinit var searchView: SearchView
 
 
     @Inject
@@ -27,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         (applicationContext as PixaApplication).appComponent.inject(this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         viewModel.test()
 
@@ -35,6 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         searchView.setQuery("apple", true)
 
+        binding.viewModel = viewModel
+        
 
     }
 }

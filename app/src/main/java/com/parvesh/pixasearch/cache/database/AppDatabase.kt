@@ -6,7 +6,7 @@ import com.parvesh.pixasearch.cache.CacheDao
 import com.parvesh.pixasearch.cache.models.PostEntity
 import com.parvesh.pixasearch.cache.models.SearchEntity
 
-@Database(entities = [PostEntity::class, SearchEntity::class], version = 1)
+@Database(entities = [PostEntity::class, SearchEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun postDao(): CacheDao
