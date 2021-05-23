@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="AppTheme.SearchBar" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textColorHint">@color/white_dull</item>
+    </style>
+
+
+</resources>

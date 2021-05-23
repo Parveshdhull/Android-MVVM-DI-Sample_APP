@@ -2,6 +2,7 @@ package com.parvesh.pixasearch.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.parvesh.pixasearch.PixaApplication
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var factory: ViewModelProvider.Factory
     val viewModel: MainActivityViewModel by viewModels { factory }
 
+    lateinit var searchView: SearchView
+
 
     @Inject
     lateinit var postsRepository: PostsRepository
@@ -27,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel.test()
+
+        searchView = findViewById(R.id.main_activity_search_view)
+
+        searchView.setQuery("apple", true)
 
 
     }
