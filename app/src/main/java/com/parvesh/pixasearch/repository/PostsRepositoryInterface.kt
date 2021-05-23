@@ -6,8 +6,9 @@ import io.reactivex.rxjava3.core.Flowable
 
 interface PostsRepositoryInterface {
 
-    suspend fun getPosts(key: String, searchTerm: String, image_type: String, page: Int, limit: Int): Flowable<List<PostEntity>>
+    suspend fun getPosts(searchTerm: String, limit: Int): Flowable<List<PostEntity>>
 
     suspend fun getSearchEntity(searchTerm: String): Flowable<SearchEntity>
 
+    suspend fun updateCache(key: String, searchTerm: String, image_type: String, page: Int)
 }

@@ -10,7 +10,7 @@ object AppModule {
     @Singleton
     @Provides
     fun randomString(): String{
-        return "You Rock Man!!"
+        return "Just a dummy String"
     }
 
 }

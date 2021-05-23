@@ -2,15 +2,19 @@ package com.parvesh.pixasearch.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.parvesh.pixasearch.PixaApplication
 import com.parvesh.pixasearch.R
 import com.parvesh.pixasearch.repository.PostsRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+    val viewModel: MainActivityViewModel by viewModels { factory }
+
 
     @Inject
     lateinit var postsRepository: PostsRepository
@@ -22,13 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            postsRepository.search_test(
-                    "21736348-b069a7496d70ba46695b66779",
-                    "apple+mango",
-                    "photo",
-                    1
-            )
-        }
+        viewModel.test()
+
+
     }
 }
