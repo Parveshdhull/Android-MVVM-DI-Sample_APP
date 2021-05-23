@@ -1,8 +1,8 @@
-package com.parvesh.pixasearch.Utils
+package com.parvesh.pixasearch.utils
 
 import android.util.Log
 
-object Util {
+object Utils {
 
     private val TAG: String = "EXPO_DEBUG_TAG"
 

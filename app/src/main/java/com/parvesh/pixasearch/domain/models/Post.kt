@@ -1,6 +1,7 @@
 package com.parvesh.pixasearch.domain.models
 
 data class Post (
+    val id:Int,
     val thumbnail:String,
     val userName:String,
     val tags:String,

@@ -2,7 +2,6 @@ package com.parvesh.pixasearch.di
 
 import com.google.gson.GsonBuilder
 import com.parvesh.pixasearch.network.RetrofitSearchService
-import com.parvesh.pixasearch.network.models.PostDTOMapper
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -15,7 +14,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRecipeService(): RetrofitSearchService {
+    fun provideSearchService(): RetrofitSearchService {
         return Retrofit.Builder()
             .baseUrl("https://pixabay.com/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))

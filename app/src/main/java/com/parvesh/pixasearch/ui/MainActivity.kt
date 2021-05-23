@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.parvesh.pixasearch.PixaApplication
 import com.parvesh.pixasearch.R
-import com.parvesh.pixasearch.Utils.Util
 import com.parvesh.pixasearch.repository.PostsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,13 +23,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         CoroutineScope(Dispatchers.IO).launch {
-            Util.log(
-                "Main Activity String", "" +postsRepository.search(
+            postsRepository.search_test(
                     "21736348-b069a7496d70ba46695b66779",
                     "apple+mango",
                     "photo",
                     1
-                )
             )
         }
     }

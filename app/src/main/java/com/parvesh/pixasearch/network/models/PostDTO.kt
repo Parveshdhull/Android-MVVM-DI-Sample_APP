@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class PostDTO (
 
+    @SerializedName("id")
+    val id:Int,
+    
     @SerializedName("previewURL")
     val thumbnail:String,
 
