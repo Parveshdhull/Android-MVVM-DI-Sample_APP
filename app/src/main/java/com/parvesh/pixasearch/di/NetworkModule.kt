@@ -21,12 +21,4 @@ object NetworkModule {
             .build()
             .create(RetrofitSearchService::class.java)
     }
-
-    @Singleton
-    @Provides
-    @Named("api_key")
-    fun provideApiKey(): String{
-        return "21736348-b069a7496d70ba46695b66779"
-    }
-
 }

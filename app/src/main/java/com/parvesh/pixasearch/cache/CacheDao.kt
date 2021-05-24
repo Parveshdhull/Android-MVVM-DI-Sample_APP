@@ -1,5 +1,6 @@
 package com.parvesh.pixasearch.cache
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -18,12 +19,12 @@ interface CacheDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertPosts(posts: List<PostEntity>)
 
-    @Query("SELECT * FROM posts WHERE searchTerm = :searchTerm LIMIT :limit")
-    fun getPosts(searchTerm: String, limit: Int): Flowable<List<PostEntity>>
+    @Query("SELECT * FROM posts WHERE searchTerm = :searchTerm ORDER BY postsOrder")
+    fun getPosts(searchTerm: String): Flowable<List<PostEntity>>
 
     // Search Related Code
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertSearchEntity(searchEntity: SearchEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSearchEntity(searchEntity: SearchEntity)
 
     @Query("SELECT * FROM searchTerms WHERE searchTerm = :searchTerm")
     fun getSearchEntity(searchTerm: String): Flowable<SearchEntity>

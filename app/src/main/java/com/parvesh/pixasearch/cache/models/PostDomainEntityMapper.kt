@@ -13,7 +13,8 @@ class PostDomainEntityMapper @Inject constructor(){
             model.largeImage,
             model.likesCount,
             model.favoritesCount,
-            model.commentsCount
+            model.commentsCount,
+            model.postsOrder
         )
     }
 
@@ -27,7 +28,8 @@ class PostDomainEntityMapper @Inject constructor(){
             domainModel.likesCount,
             domainModel.favoritesCount,
             domainModel.commentsCount,
-            searchTerm
+            searchTerm,
+            domainModel.postsOrder
         )
     }
 

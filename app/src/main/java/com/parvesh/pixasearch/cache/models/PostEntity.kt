@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "posts")
 data class PostEntity(
 
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id:Int,
 
@@ -33,5 +33,8 @@ data class PostEntity(
     val commentsCount:Int,
 
     @ColumnInfo(name = "searchTerm")
-    val searchTerm:String
+    val searchTerm:String,
+
+    @ColumnInfo(name = "postsOrder")
+    val postsOrder: Int
 )

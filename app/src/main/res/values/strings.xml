@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">PixaSearch</string>
     <string name="no_data_found">No Data Found</string>
+    <string name="pixo_search_thumbnail">Pixo Search Thumbnail</string>
+    <string name="user_name_prefix">User:</string>
+    <string name="tags_prefix">Tags:</string>
+    <string name="api_key">21736348-b069a7496d70ba46695b66779</string>
+    <string name="image_type">photo</string>
 </resources>

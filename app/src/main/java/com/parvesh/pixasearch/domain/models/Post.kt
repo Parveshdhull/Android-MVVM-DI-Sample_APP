@@ -8,5 +8,6 @@ data class Post (
     val largeImage:String,
     val likesCount:Int,
     val favoritesCount:Int,
-    val commentsCount:Int
+    val commentsCount:Int,
+    val postsOrder: Int
     )
