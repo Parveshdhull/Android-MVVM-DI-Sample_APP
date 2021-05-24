@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.parvesh.pixasearch.ui.MainActivityViewModel" />
+            type="com.parvesh.pixasearch.ui.viewmodels.MainActivityViewModel" />
     </data>
 
     <RelativeLayout

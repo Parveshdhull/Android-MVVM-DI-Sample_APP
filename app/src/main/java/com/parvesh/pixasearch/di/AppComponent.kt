@@ -1,6 +1,7 @@
 package com.parvesh.pixasearch.di;
 
 import android.content.Context
+import com.parvesh.pixasearch.ui.DetailsActivity
 import com.parvesh.pixasearch.ui.MainActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -21,5 +22,6 @@ interface AppComponent {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
 
-    fun inject(activity: MainActivity)
+    fun injectMainActivity(activity: MainActivity)
+    fun injectDetailsActivity(activity: DetailsActivity)
 }

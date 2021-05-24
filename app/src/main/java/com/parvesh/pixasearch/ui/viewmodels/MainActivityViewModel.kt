@@ -1,4 +1,4 @@
-package com.parvesh.pixasearch.ui
+package com.parvesh.pixasearch.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -141,6 +141,5 @@ class MainActivityViewModel @Inject constructor(
     fun getPosts(): LiveData<List<Post>> {
         return mutableLiveData
     }
-
 
 }

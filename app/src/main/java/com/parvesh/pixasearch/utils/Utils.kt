@@ -7,6 +7,7 @@ import java.net.URLEncoder
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
+
 object Utils {
 
     private val TAG: String = "EXPO_DEBUG_TAG"
@@ -33,4 +34,5 @@ object Utils {
         val re = Regex("[^A-Za-z0-9 ]")
         return re.replace(input, "")
     }
+
 }

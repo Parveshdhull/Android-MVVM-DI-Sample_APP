@@ -2,7 +2,7 @@ package com.parvesh.pixasearch.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.parvesh.pixasearch.ui.MainActivityViewModel
+import com.parvesh.pixasearch.ui.viewmodels.MainActivityViewModel
 import javax.inject.Inject
 import javax.inject.Provider
 

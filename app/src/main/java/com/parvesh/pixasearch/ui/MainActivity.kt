@@ -1,8 +1,11 @@
 package com.parvesh.pixasearch.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +17,8 @@ import com.parvesh.pixasearch.R
 import com.parvesh.pixasearch.adapters.MainActivityRecyclerViewAdapter
 import com.parvesh.pixasearch.databinding.ActivityMainBinding
 import com.parvesh.pixasearch.domain.models.Post
+import com.parvesh.pixasearch.ui.viewmodels.MainActivityViewModel
+import com.parvesh.pixasearch.utils.RecyclerTouchListener
 import com.parvesh.pixasearch.utils.Utils
 import javax.inject.Inject
 
@@ -24,10 +29,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
     private val viewModel: MainActivityViewModel by viewModels { factory }
-
-    // Inject Glide Request Manager
-    @Inject
-    lateinit var requestManager: RequestManager
 
     // Insert Recycler View Adapter
     @Inject
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        (applicationContext as PixaApplication).appComponent.inject(this)
+        (applicationContext as PixaApplication).appComponent.injectMainActivity(this)
 
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         registerObservers()
 
         searchView.setOnQueryTextListener(this)
-        searchView.setQuery("laptop", true)
+        searchView.setQuery("fruits", true)
     }
 
     private fun recylerViewInitialize(){
@@ -78,6 +79,22 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 }
             }
         })
+
+        // Touch Listener
+        recyclerView.addOnItemTouchListener(
+            RecyclerTouchListener(
+                this,
+                recyclerView,
+                object : RecyclerTouchListener.OnItemClickListener {
+                    override fun onClick(view: View?, position: Int) {
+                        if(position < dataset.size){
+                            showDetails(dataset[position])
+                        }
+                    }
+                    override fun onLongClick(view: View?, position: Int) {
+                    }
+                })
+        )
     }
 
     private fun registerObservers(){
@@ -112,4 +129,24 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         return true
     }
 
+    private fun showDetails(post:Post){
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setMessage("See more Details?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { dialog, id -> openDetailsActivity(post)}
+            .setNegativeButton("No", null)
+        val alert = builder.create()
+        alert.show()
+    }
+
+    private fun openDetailsActivity(post: Post){
+        var intent: Intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("largeImage", post.largeImage)
+        intent.putExtra("userName", post.userName)
+        intent.putExtra("tags", post.tags)
+        intent.putExtra("likesCount", post.likesCount)
+        intent.putExtra("favoritesCount", post.favoritesCount)
+        intent.putExtra("commentsCount", post.commentsCount)
+        startActivity(intent)
+    }
 }
