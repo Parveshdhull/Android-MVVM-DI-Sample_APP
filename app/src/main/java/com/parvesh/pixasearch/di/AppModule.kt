@@ -20,8 +20,8 @@ object AppModule {
     fun provideGlideOptions(): RequestOptions {
         var requestOptions = RequestOptions()
         requestOptions.diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-        requestOptions.placeholder(R.drawable.ic_baseline_photo_24)
-        requestOptions.error(R.drawable.ic_baseline_photo_24)
+        requestOptions.placeholder(R.drawable.ic_logo_square)
+        requestOptions.error(R.drawable.ic_logo_square)
         return requestOptions
     }
 

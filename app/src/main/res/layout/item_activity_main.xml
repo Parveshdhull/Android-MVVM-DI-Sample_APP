@@ -10,7 +10,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_baseline_photo_24"
+            android:src="@drawable/ic_logo_square"
             android:id="@+id/item_activity_main_thumbnail"
             android:contentDescription="@string/pixo_search_thumbnail"
             android:scaleType="centerCrop"

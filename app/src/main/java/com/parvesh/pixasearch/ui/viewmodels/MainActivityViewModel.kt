@@ -38,6 +38,7 @@ class MainActivityViewModel @Inject constructor(
     private var updatingSearchEntity: Boolean = true
 
     init {
+        Utils.log("ViewModel", "Created")
         showProgressbar()
     }
 

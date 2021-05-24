@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     private fun openDetailsActivity(post: Post){
-        var intent: Intent = Intent(this, DetailsActivity::class.java)
+        var intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra("largeImage", post.largeImage)
         intent.putExtra("userName", post.userName)
         intent.putExtra("tags", post.tags)
