@@ -10,6 +10,7 @@ import com.parvesh.pixasearch.R
 import com.parvesh.pixasearch.domain.models.Post
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -37,4 +38,5 @@ object AppModule {
     fun provideEmptyDataList(): ArrayList<Post> {
         return ArrayList()
     }
+
 }

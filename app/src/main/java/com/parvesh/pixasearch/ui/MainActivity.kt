@@ -90,7 +90,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                             showDetails(dataset[position])
                         }
                     }
-
                     override fun onLongClick(view: View?, position: Int) {
                     }
                 })

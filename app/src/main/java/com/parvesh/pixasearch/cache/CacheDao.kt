@@ -13,10 +13,10 @@ interface CacheDao {
 
     // Post Related Code
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPost(post: PostEntity)
+    suspend fun insertPost(post: PostEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPosts(posts: List<PostEntity>)
+    suspend fun insertPosts(posts: List<PostEntity>)
 
     @Query("SELECT * FROM posts WHERE searchTerm = :searchTerm ORDER BY postsOrder")
     fun getPosts(searchTerm: String): Flowable<List<PostEntity>>

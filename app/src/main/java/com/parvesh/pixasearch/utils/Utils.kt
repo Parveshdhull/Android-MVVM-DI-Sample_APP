@@ -26,8 +26,8 @@ object Utils {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun urlEncodeString(string: String): String {
-        return URLEncoder.encode(string, "utf-8")
+    fun urlEncodeString(input: String): String {
+        return URLEncoder.encode(input, "utf-8")
     }
 
     fun removeSpecialCharacters(input: String): String {

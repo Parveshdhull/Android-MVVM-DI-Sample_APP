@@ -60,7 +60,7 @@ class MainActivityViewModel @Inject constructor(
             totalHits = 0
             page = 1
             this.searchTerm = searchTerm
-            getDataFromRepository(Utils.urlEncodeString(string = searchTerm), 1)
+            getDataFromRepository(Utils.urlEncodeString(input = searchTerm), 1)
         }
     }
 
@@ -110,7 +110,7 @@ class MainActivityViewModel @Inject constructor(
         var currentSize = page * 20
         if (currentSize < totalHits) {
             disposables.clear()
-            getDataFromRepository(Utils.urlEncodeString(string = searchTerm), ++page)
+            getDataFromRepository(Utils.urlEncodeString(input = searchTerm), ++page)
         } else {
             errorToast.postValue("No More Results")
         }

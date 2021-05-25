@@ -9,11 +9,10 @@ import com.parvesh.pixasearch.cache.models.SearchEntity
 @Database(entities = [PostEntity::class, SearchEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun postDao(): CacheDao
+    abstract fun cacheDao(): CacheDao
 
     companion object {
         val DATABASE_NAME: String = "pixa_search_db"
     }
-
 
 }

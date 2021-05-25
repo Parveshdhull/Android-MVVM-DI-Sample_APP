@@ -5,7 +5,7 @@ import com.parvesh.pixasearch.di.AppComponent
 import com.parvesh.pixasearch.di.DaggerAppComponent
 
 open class PixaApplication : Application() {
-    val appComponent: AppComponent by lazy {
+    open val appComponent: AppComponent by lazy {
         initializeComponent()
     }
 
