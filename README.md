@@ -2,6 +2,7 @@
 
 This is just a sample Android App project which implements several popular libraries and functionalities in MVVM Architecture.
 
+### Project Details:
 - Architecture - MVVM
 - Programming Language - Kotlin
 - Dependency Injection using Dagger2
