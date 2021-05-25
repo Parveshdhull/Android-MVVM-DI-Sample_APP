@@ -9,8 +9,8 @@ data class SearchEntity(
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "searchTerm")
-    val searchTerm:String,
+    val searchTerm: String,
 
     @ColumnInfo(name = "totalHits")
-    val totalHits:Int
+    val totalHits: Int
 )

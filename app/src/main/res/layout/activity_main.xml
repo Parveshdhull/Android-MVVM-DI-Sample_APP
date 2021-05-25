@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.parvesh.pixasearch.ui.viewmodels.MainActivityViewModel" />
@@ -12,6 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <View
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -35,20 +38,19 @@
             android:visibility="@{viewModel.hideProgressBar ? View.GONE : View.VISIBLE}" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_activity_recyler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewModel.hideRecyclerView ? View.GONE : View.VISIBLE}"
             android:layout_marginTop="50dp"
-            android:id="@+id/main_activity_recyler_view"
-            />
+            android:visibility="@{viewModel.hideRecyclerView ? View.GONE : View.VISIBLE}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/no_data_found"
-            android:visibility="@{viewModel.hidePlaceholder ? View.GONE : View.VISIBLE}"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:visibility="@{viewModel.hidePlaceholder ? View.GONE : View.VISIBLE}" />
 
     </RelativeLayout>
 </layout>

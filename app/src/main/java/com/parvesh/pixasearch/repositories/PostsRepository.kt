@@ -1,4 +1,4 @@
-package com.parvesh.pixasearch.repository
+package com.parvesh.pixasearch.repositories
 
 import android.content.Context
 import com.parvesh.pixasearch.R
@@ -36,7 +36,8 @@ class PostsRepository @Inject constructor(
                 image_type = context.getString(R.string.image_type),
                 page = page
             )
-            val postEntitiesList = postDTOEntityMapper.toPostEntitiesList(response.hits, searchTerm, page - 1)
+            val postEntitiesList =
+                postDTOEntityMapper.toPostEntitiesList(response.hits, searchTerm, page - 1)
             dao.insertPosts(postEntitiesList)
             dao.insertSearchEntity(SearchEntity(searchTerm, response.totalHits))
         } catch (e: Exception) {

@@ -45,7 +45,7 @@ class DetailsActivity : AppCompatActivity() {
             likesCount = "Likes: " + extras.getInt("likesCount")
             favoritesCount = "Favourites: " + extras.getInt("favoritesCount")
             commentsCount = "Comments: " + extras.getInt("commentsCount")
-            largeImage = extras.getString("largeImage")?:""
+            largeImage = extras.getString("largeImage") ?: ""
         }
 
         imageView = findViewById(R.id.activity_details_image_view)

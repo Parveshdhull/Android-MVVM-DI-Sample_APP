@@ -1,4 +1,4 @@
-package com.parvesh.pixasearch.repository
+package com.parvesh.pixasearch.repositories
 
 import com.parvesh.pixasearch.cache.models.PostEntity
 import com.parvesh.pixasearch.cache.models.SearchEntity

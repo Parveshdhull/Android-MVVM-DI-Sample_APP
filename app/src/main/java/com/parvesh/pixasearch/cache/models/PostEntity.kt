@@ -7,34 +7,38 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "posts")
 data class PostEntity(
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "key")
+    val key: String,
+
     @ColumnInfo(name = "id")
-    val id:Int,
+    val id: Int,
 
     @ColumnInfo(name = "previewURL")
-    val thumbnail:String,
+    val thumbnail: String,
 
     @ColumnInfo(name = "user")
-    val userName:String,
+    val userName: String,
 
     @ColumnInfo(name = "tags")
-    val tags:String,
+    val tags: String,
 
     @ColumnInfo(name = "largeImageURL")
-    val largeImage:String,
+    val largeImage: String,
 
     @ColumnInfo(name = "likes")
-    val likesCount:Int,
+    val likesCount: Int,
 
     @ColumnInfo(name = "favorites")
-    val favoritesCount:Int,
+    val favoritesCount: Int,
 
     @ColumnInfo(name = "comments")
-    val commentsCount:Int,
+    val commentsCount: Int,
 
     @ColumnInfo(name = "searchTerm")
-    val searchTerm:String,
+    val searchTerm: String,
 
     @ColumnInfo(name = "postsOrder")
     val postsOrder: Int
+
 )

@@ -1,13 +1,14 @@
 package com.parvesh.pixasearch.domain.models
 
-data class Post (
-    val id:Int,
-    val thumbnail:String,
-    val userName:String,
-    val tags:String,
-    val largeImage:String,
-    val likesCount:Int,
-    val favoritesCount:Int,
-    val commentsCount:Int,
+data class Post(
+    val key: String,
+    val id: Int,
+    val thumbnail: String,
+    val userName: String,
+    val tags: String,
+    val largeImage: String,
+    val likesCount: Int,
+    val favoritesCount: Int,
+    val commentsCount: Int,
     val postsOrder: Int
-    )
+)

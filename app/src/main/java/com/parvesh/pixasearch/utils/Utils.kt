@@ -16,21 +16,21 @@ object Utils {
         Log.d(TAG, "$key : $value")
     }
 
-    fun containsSpecialCharacters(input: String): Boolean{
+    fun containsSpecialCharacters(input: String): Boolean {
         val p: Pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE)
         val m: Matcher = p.matcher(input)
         return m.find()
     }
 
-    fun showShortToast(context: Context, msg: String){
+    fun showShortToast(context: Context, msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun urlEncodeString(string: String): String{
+    fun urlEncodeString(string: String): String {
         return URLEncoder.encode(string, "utf-8")
     }
 
-    fun removeSpecialCharacters(input: String): String{
+    fun removeSpecialCharacters(input: String): String {
         val re = Regex("[^A-Za-z0-9 ]")
         return re.replace(input, "")
     }

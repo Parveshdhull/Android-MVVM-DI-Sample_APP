@@ -22,7 +22,7 @@ object CacheModule {
 
     @Singleton
     @Provides
-    fun providePostsDao(db: AppDatabase): CacheDao{
+    fun providePostsDao(db: AppDatabase): CacheDao {
         return db.postDao()
     }
 

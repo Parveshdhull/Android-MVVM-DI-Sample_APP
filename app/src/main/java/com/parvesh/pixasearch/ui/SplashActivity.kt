@@ -2,10 +2,10 @@ package com.parvesh.pixasearch.ui
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.parvesh.pixasearch.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

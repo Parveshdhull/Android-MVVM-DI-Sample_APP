@@ -10,9 +10,10 @@ class RecyclerTouchListener(
     context: Context?,
     recyclerView: RecyclerView,
     private val clickListener: OnItemClickListener?
-    ) :
+) :
     RecyclerView.OnItemTouchListener {
-        private val gestureDetector: GestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+    private val gestureDetector: GestureDetector =
+        GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapUp(e: MotionEvent): Boolean {
                 return true
             }
@@ -26,18 +27,18 @@ class RecyclerTouchListener(
         })
 
     override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-            val child: View? = rv.findChildViewUnder(e.x, e.y)
-            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
-                clickListener.onClick(child, rv.getChildAdapterPosition(child))
-            }
-            return false
+        val child: View? = rv.findChildViewUnder(e.x, e.y)
+        if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
+            clickListener.onClick(child, rv.getChildAdapterPosition(child))
         }
+        return false
+    }
 
-        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
-        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
-        interface OnItemClickListener {
-            fun onClick(view: View?, position: Int)
-            fun onLongClick(view: View?, position: Int)
-        }
+    override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+    interface OnItemClickListener {
+        fun onClick(view: View?, position: Int)
+        fun onLongClick(view: View?, position: Int)
+    }
 
 }

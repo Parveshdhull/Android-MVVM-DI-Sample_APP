@@ -7,7 +7,7 @@ import com.parvesh.pixasearch.cache.models.PostDomainEntityMapper
 import com.parvesh.pixasearch.cache.models.PostEntity
 import com.parvesh.pixasearch.cache.models.SearchEntity
 import com.parvesh.pixasearch.domain.models.Post
-import com.parvesh.pixasearch.repository.PostsRepository
+import com.parvesh.pixasearch.repositories.PostsRepository
 import com.parvesh.pixasearch.utils.Utils
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.CoroutineScope
@@ -108,10 +108,10 @@ class MainActivityViewModel @Inject constructor(
 
     fun downloadMorePosts() {
         var currentSize = page * 20
-        if(currentSize < totalHits){
+        if (currentSize < totalHits) {
             disposables.clear()
             getDataFromRepository(Utils.urlEncodeString(string = searchTerm), ++page)
-        }else{
+        } else {
             errorToast.postValue("No More Results")
         }
     }

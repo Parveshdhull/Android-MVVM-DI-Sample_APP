@@ -5,13 +5,13 @@ import com.parvesh.pixasearch.network.models.PostDTO
 
 data class RetrofitSearchResponse(
 
-        @SerializedName("total")
-        var total: Int,
+    @SerializedName("total")
+    var total: Int,
 
-        @SerializedName("totalHits")
-        var totalHits: Int,
+    @SerializedName("totalHits")
+    var totalHits: Int,
 
-        @SerializedName("hits")
-        var hits: List<PostDTO>
+    @SerializedName("hits")
+    var hits: List<PostDTO>
 
 )

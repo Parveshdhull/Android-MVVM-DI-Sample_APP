@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.RequestManager
 import com.parvesh.pixasearch.PixaApplication
 import com.parvesh.pixasearch.R
 import com.parvesh.pixasearch.adapters.MainActivityRecyclerViewAdapter
@@ -65,7 +64,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         searchView.setQuery("fruits", true)
     }
 
-    private fun recylerViewInitialize(){
+    private fun recylerViewInitialize() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -87,18 +86,19 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 recyclerView,
                 object : RecyclerTouchListener.OnItemClickListener {
                     override fun onClick(view: View?, position: Int) {
-                        if(position < dataset.size){
+                        if (position < dataset.size) {
                             showDetails(dataset[position])
                         }
                     }
+
                     override fun onLongClick(view: View?, position: Int) {
                     }
                 })
         )
     }
 
-    private fun registerObservers(){
-        viewModel.getPosts().observe(this, {posts ->
+    private fun registerObservers() {
+        viewModel.getPosts().observe(this, { posts ->
             run {
                 downloading = false
                 dataset = posts as ArrayList<Post>
@@ -106,9 +106,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         })
 
-        viewModel.errorToast.observe(this, {error ->
-            run{
-                if(error?.isNotEmpty() == true){
+        viewModel.errorToast.observe(this, { error ->
+            run {
+                if (error?.isNotEmpty() == true) {
                     downloading = false
                     Utils.showShortToast(this, error)
                     viewModel.errorToast.postValue("")
@@ -122,24 +122,25 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(p0: String?): Boolean {
-        if(!downloading) {
+        if (!downloading) {
             downloading = true
             viewModel.search(p0 + "")
         }
         return true
     }
 
-    private fun showDetails(post:Post){
+    private fun showDetails(post: Post) {
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setMessage("See more Details?")
             .setCancelable(false)
-            .setPositiveButton("Yes") { dialog, id -> openDetailsActivity(post)}
+            .setPositiveButton("Yes") { dialog, id -> openDetailsActivity(post) }
             .setNegativeButton("No", null)
         val alert = builder.create()
         alert.show()
     }
 
-    private fun openDetailsActivity(post: Post){
+    private fun openDetailsActivity(post: Post) {
+        searchView.clearFocus()
         var intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra("largeImage", post.largeImage)
         intent.putExtra("userName", post.userName)

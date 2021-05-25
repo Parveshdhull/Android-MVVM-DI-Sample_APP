@@ -1,12 +1,12 @@
 package com.parvesh.pixasearch.network.models
 
 import com.parvesh.pixasearch.cache.models.PostEntity
-import com.parvesh.pixasearch.utils.Utils
 import javax.inject.Inject
 
-class PostDTOEntityMapper @Inject constructor(){
+class PostDTOEntityMapper @Inject constructor() {
     fun mapToPostEntity(postDto: PostDTO, searchTerm: String, postOrder: Int): PostEntity {
         return PostEntity(
+            searchTerm + postDto.id,
             postDto.id,
             postDto.thumbnail,
             postDto.userName,
@@ -33,7 +33,11 @@ class PostDTOEntityMapper @Inject constructor(){
         )
     }
 
-    fun toPostEntitiesList(initial: List<PostDTO>, searchTerm: String, multiplier: Int): List<PostEntity>{
+    fun toPostEntitiesList(
+        initial: List<PostDTO>,
+        searchTerm: String,
+        multiplier: Int
+    ): List<PostEntity> {
         return initial.mapIndexed { index, postDto ->
             mapToPostEntity(
                 postDto,
@@ -43,7 +47,7 @@ class PostDTOEntityMapper @Inject constructor(){
         }
     }
 
-    fun fromPostEntitiesList(initial: List<PostEntity>): List<PostDTO>{
+    fun fromPostEntitiesList(initial: List<PostEntity>): List<PostDTO> {
         return initial.map { mapFromPostEntity(it) }
     }
 }
