@@ -1,4 +1,4 @@
-package com.parvesh.pixasearch.di;
+package com.parvesh.pixasearch.di
 
 import android.content.Context
 import com.parvesh.pixasearch.ui.DetailsActivity

@@ -10,7 +10,6 @@ import com.parvesh.pixasearch.R
 import com.parvesh.pixasearch.domain.models.Post
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -19,7 +18,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideGlideOptions(): RequestOptions {
-        var requestOptions = RequestOptions()
+        val requestOptions = RequestOptions()
         requestOptions.diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         requestOptions.placeholder(R.drawable.ic_logo_square)
         requestOptions.error(R.drawable.ic_logo_square)

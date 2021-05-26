@@ -10,7 +10,7 @@ import java.util.regex.Pattern
 
 object Utils {
 
-    private val TAG: String = "EXPO_DEBUG_TAG"
+    private const val TAG: String = "EXPO_DEBUG_TAG"
 
     fun log(key: String, value: String) {
         Log.d(TAG, "$key : $value")

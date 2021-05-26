@@ -1,13 +1,12 @@
 package com.parvesh.pixasearch.ui.viewmodels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.google.common.truth.Truth.assertThat
 import com.parvesh.pixasearch.cache.models.PostDomainEntityMapper
 import com.parvesh.pixasearch.repositories.PostsRepository
-import org.junit.Test
-import com.google.common.truth.Truth.assertThat
-
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
@@ -25,7 +24,7 @@ class MainActivityViewModelTest {
     private lateinit var postsRepository: PostsRepository
 
     @Before
-    fun setup(){
+    fun setup() {
         mainActivityViewModel = MainActivityViewModel(postsRepository, entityMapper)
     }
 

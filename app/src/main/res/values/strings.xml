@@ -7,4 +7,5 @@
     <string name="tags_prefix">Tags:</string>
     <string name="api_key">21736348-b069a7496d70ba46695b66779</string>
     <string name="image_type">photo</string>
+    <string name="pixabay_logo_image">Pixabay Logo Image</string>
 </resources>

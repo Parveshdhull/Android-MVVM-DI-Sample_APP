@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-        var intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
 
         countingIdlingResource.increment()
         CoroutineScope(Dispatchers.Main).launch {

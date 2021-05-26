@@ -2,12 +2,9 @@ package com.parvesh.pixasearch.utils
 
 import android.view.View
 import android.widget.SearchView
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers
-import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 

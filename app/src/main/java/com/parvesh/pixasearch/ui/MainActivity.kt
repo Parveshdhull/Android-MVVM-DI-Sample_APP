@@ -58,9 +58,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.lifecycleOwner = this
 
         searchView = findViewById(R.id.main_activity_search_view)
-        recyclerView = findViewById(R.id.main_activity_recyler_view)
+        recyclerView = findViewById(R.id.main_activity_recycler_view)
 
-        recylerViewInitialize()
+        recyclerViewInitialize()
 
         registerObservers()
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         searchView.setQuery("fruits", true)
     }
 
-    private fun recylerViewInitialize() {
+    private fun recyclerViewInitialize() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                             showDetails(dataset[position])
                         }
                     }
+
                     override fun onLongClick(view: View?, position: Int) {
                     }
                 })
@@ -119,11 +120,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         })
 
-        viewModel.hideRecyclerView.observe(this, {hide ->
-            run{
-                if(hide){
+        viewModel.hideRecyclerView.observe(this, { hide ->
+            run {
+                if (hide) {
                     incrementIdlingCounter()
-                }else{
+                } else {
                     decrementIdlingCounter()
                 }
             }
@@ -155,7 +156,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private fun openDetailsActivity(post: Post) {
         searchView.clearFocus()
-        var intent = Intent(this, DetailsActivity::class.java)
+        val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra("largeImage", post.largeImage)
         intent.putExtra("userName", post.userName)
         intent.putExtra("tags", post.tags)
@@ -166,15 +167,15 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
 
-    private fun decrementIdlingCounter(){
-            if (!countingIdlingResource.isIdleNow && incremented) {
-                incremented = false
-                countingIdlingResource.decrement()
-            }
+    private fun decrementIdlingCounter() {
+        if (!countingIdlingResource.isIdleNow && incremented) {
+            incremented = false
+            countingIdlingResource.decrement()
+        }
     }
 
-    private fun incrementIdlingCounter(){
-        if(!incremented) {
+    private fun incrementIdlingCounter() {
+        if (!incremented) {
             incremented = true
             countingIdlingResource.increment()
         }

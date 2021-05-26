@@ -12,7 +12,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun cacheDao(): CacheDao
 
     companion object {
-        val DATABASE_NAME: String = "pixa_search_db"
+        const val DATABASE_NAME: String = "pixa_search_db"
     }
 
 }

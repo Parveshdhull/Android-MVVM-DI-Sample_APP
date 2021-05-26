@@ -35,7 +35,7 @@ class MainActivityRecyclerViewAdapter @Inject constructor(
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         if (position <= dataset.size) {
-            val post: Post = dataset.get(position)
+            val post: Post = dataset[position]
             requestManager.load(post.thumbnail).into(viewHolder.thumbnailView)
             (context.getString(R.string.user_name_prefix) + " " + post.userName).also {
                 viewHolder.userView.text = it

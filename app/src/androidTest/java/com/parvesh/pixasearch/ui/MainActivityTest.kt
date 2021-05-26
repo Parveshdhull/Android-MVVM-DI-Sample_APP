@@ -1,9 +1,8 @@
 package com.parvesh.pixasearch.ui
 
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.idling.CountingIdlingResource
@@ -18,6 +17,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class MainActivityTest {
@@ -38,7 +38,7 @@ class MainActivityTest {
 
     @Test
     fun checkIfImagesLoadingOnStartup() {
-        onView(withId(R.id.main_activity_recyler_view))
+        onView(withId(R.id.main_activity_recycler_view))
             .check(matches(isDisplayed()))
     }
 
@@ -47,13 +47,13 @@ class MainActivityTest {
         onView(withId(R.id.main_activity_search_view))
             .perform(typeSearchViewText("tiger"))
 
-        onView(withId(R.id.main_activity_recyler_view))
+        onView(withId(R.id.main_activity_recycler_view))
             .check(matches(isDisplayed()))
     }
 
     @Test
-    fun openDetailsActivity(){
-        onView(withId(R.id.main_activity_recyler_view))
+    fun openDetailsActivity() {
+        onView(withId(R.id.main_activity_recycler_view))
             .perform(actionOnItemAtPosition<MainActivityRecyclerViewAdapter.ViewHolder>(0, click()))
 
         onView(withText("Yes")).perform(click())
@@ -61,7 +61,6 @@ class MainActivityTest {
         onView(withId(R.id.activity_details_image_view))
             .check(matches(isDisplayed()))
     }
-
 
 
 }
