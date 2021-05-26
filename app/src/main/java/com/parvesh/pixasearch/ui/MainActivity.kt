@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.parvesh.pixasearch.PixaApplication
 import com.parvesh.pixasearch.R
 import com.parvesh.pixasearch.adapters.MainActivityRecyclerViewAdapter
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private var dataset: ArrayList<Post> = ArrayList()
 
     private var downloading: Boolean = false
+
+    val countingIdlingResource = CountingIdlingResource("mainActivitySearch")
+    private var incremented: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,11 +118,22 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 }
             }
         })
+
+        viewModel.hideRecyclerView.observe(this, {hide ->
+            run{
+                if(hide){
+                    incrementIdlingCounter()
+                }else{
+                    decrementIdlingCounter()
+                }
+            }
+        })
     }
 
     override fun onQueryTextSubmit(p0: String?): Boolean {
         return true  // Do Nothing
     }
+
 
     override fun onQueryTextChange(p0: String?): Boolean {
         if (!downloading) {
@@ -149,4 +164,20 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         intent.putExtra("commentsCount", post.commentsCount)
         startActivity(intent)
     }
+
+
+    private fun decrementIdlingCounter(){
+            if (!countingIdlingResource.isIdleNow && incremented) {
+                incremented = false
+                countingIdlingResource.decrement()
+            }
+    }
+
+    private fun incrementIdlingCounter(){
+        if(!incremented) {
+            incremented = true
+            countingIdlingResource.increment()
+        }
+    }
+
 }

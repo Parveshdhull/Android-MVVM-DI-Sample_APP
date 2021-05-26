@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.parvesh.pixasearch.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
+
+    val countingIdlingResource = CountingIdlingResource("splashAnimation")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -27,10 +31,12 @@ class SplashActivity : AppCompatActivity() {
         }
         var intent = Intent(this, MainActivity::class.java)
 
+        countingIdlingResource.increment()
         CoroutineScope(Dispatchers.Main).launch {
             delay(1000)
             startActivity(intent)
             finish()
+            countingIdlingResource.decrement()
         }
     }
 }
