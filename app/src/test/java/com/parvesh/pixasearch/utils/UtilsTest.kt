@@ -1,9 +1,14 @@
 package com.parvesh.pixasearch.utils
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
+import org.junit.Rule
 import org.junit.Test
 
 class UtilsTest {
+
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     /**
      * Tests for Utils function:

@@ -38,11 +38,10 @@ class MainActivityViewModel @Inject constructor(
     private var updatingSearchEntity: Boolean = true
 
     init {
-        Utils.log("ViewModel", "Created")
         showProgressbar()
     }
 
-    private fun validateSearchTerm(searchTerm: String): Boolean {
+    fun validateSearchTerm(searchTerm: String): Boolean {
         if (Utils.containsSpecialCharacters(searchTerm)) {
             errorToast.value = "Special Characters Not Allowed"
             return false
@@ -76,6 +75,7 @@ class MainActivityViewModel @Inject constructor(
                 .subscribe { searchEntity -> searchEntityObserverFired(searchEntity) })
 
             postsRepository.updateCache(searchTerm, page)
+
         }
     }
 
@@ -107,7 +107,7 @@ class MainActivityViewModel @Inject constructor(
 
 
     fun downloadMorePosts() {
-        var currentSize = page * 20
+        val currentSize = page * 20
         if (currentSize < totalHits) {
             disposables.clear()
             getDataFromRepository(Utils.urlEncodeString(input = searchTerm), ++page)
