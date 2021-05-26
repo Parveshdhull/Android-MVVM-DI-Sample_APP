@@ -15,4 +15,7 @@ This is just a sample Android App project which implements several popular libra
 - UI Testing Using Espresso
 
 ### Demo Video:
-https://drive.google.com/file/d/1K_DSPBLVUBtZNhxoZyE-LJHWnOmBLVlW/view?usp=sharing
+https://drive.google.com/file/d/19Bzz6hlpwQsxgyNBP1hH4guWmFTa2G_h/view?usp=sharing
+
+### APK:
+https://github.com/Parveshdhull/Android-MVVM-DI-Sample_APP/releases
