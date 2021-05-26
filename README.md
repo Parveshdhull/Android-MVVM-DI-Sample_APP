@@ -13,3 +13,6 @@ This is just a sample Android App project which implements several popular libra
 - Data Binding
 - Testing Using Junit4 and Mockito
 - UI Testing Using Espresso
+
+### Demo Video:
+https://drive.google.com/file/d/1K_DSPBLVUBtZNhxoZyE-LJHWnOmBLVlW/view?usp=sharing
